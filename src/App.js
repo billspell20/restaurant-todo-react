@@ -15,8 +15,8 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://codingthesmartway.com" target="_blank" rel="noreferrer">
-              <img src={logo} width="30" height="30" alt="CodingTheSmartWay.com" />
+            <a className="navbar-brand" href="https://google.com" target="_blank" rel="noreferrer">
+              <img src={logo} width="30" height="30" alt="img" />
             </a>
             <Link to="/" className="navbar-brand">Resturaunts Passport and Todo App</Link>
             <div className="collpase navbar-collapse">
