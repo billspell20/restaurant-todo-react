@@ -29,13 +29,28 @@
   text-decoration: line-through;
 }
 
+.btn-outline-primary {
+  margin-top: 40px;
+  color: #282c34;
+  border-color: #282c34;
+}
+
+.btn-outline-primary:hover{
+  background-color: #282c34;
+  border-color: #282c34;
+}
+
+h3 {
+  text-align: center;
+}
+
 Footer {
   text-align: center;
   bottom: 0;
   position: fixed;
   left: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 1rem;
   font-size: 10px;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
 }

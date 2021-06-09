@@ -5,7 +5,6 @@ import axios from 'axios';
 const Todo = props => (
     <tr>
         <td>{props.todo.todo_description}</td>
-        <td>{props.todo.todo_responsible}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
             <Link to={"/edit/"+props.todo._id}>Edit</Link>
@@ -39,13 +38,12 @@ export default class TodosList extends Component {
     render() {
         return (
             <div>
-                <h3>Todos List</h3>
+                <h3>Restaurant List</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }} >
                     <thead>
                         <tr>
-                            <th>Description</th>
-                            <th>Responsible</th>
-                            <th>Priority</th>
+                            <th>Restaurant</th>                           
+                            <th>Rank Level</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -53,6 +51,9 @@ export default class TodosList extends Component {
                         { this.todoList() }
                     </tbody>
                 </table>
+                <div className="row justify-content-center">
+                    <a href="/create" className="btn btn-outline-primary" role="button" aria-pressed="true">Create New Entry</a>
+                </div>
             </div>
         )
     }

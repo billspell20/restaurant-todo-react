@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import { Navbar, Nav} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
@@ -16,12 +16,12 @@ class App extends Component {
     return (
       <Router>
           <Navbar bg="dark" style={{backgroundColor: "282c34"}} expand="sm">
-            <Navbar.Brand href="/" style={{color: "white"}}>Resturaunt Passport</Navbar.Brand>
+            <Navbar.Brand href="/" style={{color: "white"}}>Restaurant Passport</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" style={{color: "white"}}>
               <Nav className="mr-auto">
-                <Nav.Link to="/" className="nav-link" style={{color: "white"}}>To-do's</Nav.Link>
-                <Nav.Link to="/create" className="nav-link" style={{color: "white"}}>Create To-do's</Nav.Link>
+                <Nav.Link href="/" className="nav-link" style={{color: "white"}}>View List</Nav.Link>
+                <Nav.Link href="/create" className="nav-link" style={{color: "white"}}>Add Entry</Nav.Link>
               </Nav>
 
             </Navbar.Collapse>
@@ -32,7 +32,7 @@ class App extends Component {
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
         </div>
-        
+
         <Footer />
       </Router>
     );
