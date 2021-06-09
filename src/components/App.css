@@ -25,7 +25,7 @@
   background-color: white !important;
 }
 
-.completed {
+.checked {
   text-decoration: line-through;
 }
 
