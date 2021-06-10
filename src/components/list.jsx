@@ -4,8 +4,8 @@ import axios from 'axios';
 
 const Todo = props => (
     <tr>
-        <td>{props.todo.todo_description}</td>
-        <td>{props.todo.todo_priority}</td>
+        <td style={{color: props.todo.todo_completed===true ? "green" : "black" }} >{props.todo.todo_description}</td>
+        <td style={{color: props.todo.todo_completed===true ? "green" : "black" }}>{props.todo.todo_priority}</td>
         <td>
             <Link to={"/edit/"+props.todo._id}>Edit</Link>
         </td>
