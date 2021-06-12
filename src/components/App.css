@@ -44,10 +44,10 @@ h3 {
 }
 
 Footer {
-  margin-top: 50px;
+  margin-top: 300px !important;
   text-align: center;
   bottom: 0;
-  position: bottom;
+  position: static;
   left: 0;
   width: 100%;
   height: 1rem;
