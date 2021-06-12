@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Todo = props => (
-    <tr style={{border: props.todo.todo_completed===true ? "10px double #00FA9A" : "black" }}>
+    <tr style={{border: props.todo.todo_completed===true ? "5px double #00FA9A" : "black" }}>
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
@@ -44,7 +44,7 @@ export default class TodosList extends Component {
                     <thead>
                         <tr>
                             <th>Restaurant</th>                           
-                            <th>Rank Level</th>
+                            <th>Priority Level</th>
                             <th>Action</th>
                             <th style={{display: "none"}}></th>
                         </tr>
