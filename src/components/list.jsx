@@ -54,7 +54,7 @@ export default class TodosList extends Component {
                     </tbody>
                 </table>
                 <div className="row justify-content-center">
-                    <a href="/create" className="btn btn-outline-primary" role="button" aria-pressed="true">Create New Entry</a>
+                    <a href="/create" className="btn btn-outline-primary" role="button" aria-pressed="true" style={{marginBottom:"40px"}}>Create New Entry</a>
                 </div>
             </div>
         )

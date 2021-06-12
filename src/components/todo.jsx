@@ -129,10 +129,13 @@ export default class EditTodo extends Component {
 
                     <br />
 
-                    <div className="form-group">
-                        <input type="submit" value="Update Item" className="btn btn-primary" />
+                    <div className="form-group row justify-content-center">
+                        <input type="submit" value="Update Item" className="btn btn-outline-primary" />
                     </div>
                 </form>
+                <div className="row justify-content-center">
+                    <a href="/" className="btn btn-outline-danger" role="button" aria-pressed="true" style={{marginBottom:"40px"}}>Cancel</a>
+                </div>
             </div>
         )
     }

@@ -30,7 +30,6 @@
 }
 
 .btn-outline-primary {
-  margin-top: 40px;
   color: #282c34;
   border-color: #282c34;
 }
@@ -45,9 +44,10 @@ h3 {
 }
 
 Footer {
+  margin-top: 50px;
   text-align: center;
   bottom: 0;
-  position: fixed;
+  position: bottom;
   left: 0;
   width: 100%;
   height: 1rem;

@@ -101,10 +101,13 @@ export default class CreateTodo extends Component {
                         </div>
                     </div>
 
-                    <div className="form-group">
-                        <input type="submit" value="Create Todo" className="btn btn-primary" />
+                    <div className="form-group row justify-content-center">
+                        <input type="submit" value="Create Todo" className="btn btn-outline-primary" />
                     </div>
                 </form>
+                <div className="row justify-content-center">
+                    <a href="/" className="btn btn-outline-danger" role="button" aria-pressed="true" style={{marginBottom:"40px"}}>Cancel</a>
+                </div>
             </div>
         )
     }
