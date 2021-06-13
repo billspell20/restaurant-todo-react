@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 const Todo = props => (
     <tr style={{border: props.todo.todo_completed===true ? "5px double #00FA9A" : "black" }}>
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+props.todo._id}>Edit</Link>
+            <Link to={"/edit/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+        </td>
+        <td>
+            <Button onClick={props.deleteItem} className="btn btn-outline-danger">Delete</Button>
         </td>
         <td style={{display: "none"}}>{props.todo.todo_completed}</td>
     </tr>
@@ -36,6 +40,15 @@ export default class TodosList extends Component {
         })
     }
 
+    deleteItem() {
+        axios.delete('http://localhost:4000/delete/' + this.props.obj._id)
+            .then((res) => {
+                console.log('Item successfully deleted!')
+            }).catch((error) => {
+                console.log(error)
+            })
+    }
+
     render() {
         return (
             <div>
@@ -46,6 +59,7 @@ export default class TodosList extends Component {
                             <th>Restaurant</th>                           
                             <th>Priority Level</th>
                             <th>Action</th>
+                            <th>Delete</th>
                             <th style={{display: "none"}}></th>
                         </tr>
                     </thead>

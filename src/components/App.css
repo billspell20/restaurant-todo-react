@@ -39,6 +39,15 @@
   border-color: #282c34;
 }
 
+.btn-outline-danger {
+  background-color: transparent;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+}
+
+
 h3 {
   text-align: center;
 }
