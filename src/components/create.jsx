@@ -104,7 +104,7 @@ export default class CreateTodo extends Component {
                     </div>
 
                     <div className="form-group row justify-content-center">
-                        <input type="submit" value="Create Todo" className="btn btn-outline-primary" />
+                        <input type="submit" value="Create Entry" className="btn btn-outline-primary" />
                     </div>
                 </form>
                 <div className="row justify-content-center">

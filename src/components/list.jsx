@@ -11,17 +11,27 @@ const Todo = props => (
             <Link to={"/edit/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
         </td>
         <td>
-            <Button onClick={props.deleteItem} className="btn btn-outline-danger">Delete</Button>
+            <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
         </td>
         <td style={{display: "none"}}>{props.todo.todo_completed}</td>
     </tr>
-)
-
+);
+function deleteItem(props){
+    console.log(`Test`);
+    axios.delete('http://localhost:4000/todos/delete/' + props.todo._id)
+        .then((res) => {
+            console.log('Item successfully deleted!')
+        }).catch((error) => {
+            console.log(error)
+        })
+        window.location.reload();
+};
 export default class TodosList extends Component {
 
     constructor(props) {
         super(props);
         this.state = {todos: []};
+
     }
 
     componentDidMount() {
@@ -38,15 +48,6 @@ export default class TodosList extends Component {
         return this.state.todos.map(function(currentTodo, i){
             return <Todo todo={currentTodo} key={i} />;
         })
-    }
-
-    deleteItem() {
-        axios.delete('http://localhost:4000/delete/' + this.props.obj._id)
-            .then((res) => {
-                console.log('Item successfully deleted!')
-            }).catch((error) => {
-                console.log(error)
-            })
     }
 
     render() {

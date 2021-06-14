@@ -47,6 +47,14 @@
   background-color: #dc3545;
 }
 
+.btn-outline-danger:focus {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
 
 h3 {
   text-align: center;
