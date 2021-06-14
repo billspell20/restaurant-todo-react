@@ -134,7 +134,7 @@ export default class EditTodo extends Component {
                     </div>
                 </form>
                 <div className="row justify-content-center">
-                    <a href="/" className="btn btn-outline-danger" role="button" aria-pressed="true" style={{marginBottom:"40px"}}>Cancel</a>
+                    <a href="/list" className="btn btn-outline-danger" role="button" aria-pressed="true" style={{marginBottom:"40px"}}>Cancel</a>
                 </div>
             </div>
         )
