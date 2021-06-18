@@ -7,9 +7,6 @@ import './App.css';
 import CreateTodo from "./create";
 import EditTodo from "./todo";
 import TodosList from "./list";
-import Home from "./home"
-import Register from "./register";
-import Login from "./login";
 
 import Footer from "./Footer"
 
@@ -34,9 +31,6 @@ class App extends Component {
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
-          <Route path="/home" component={Home} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
         </div>
 
         <Footer />
