@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+
 class Login extends Component {
   constructor() {
     super();
@@ -14,19 +17,22 @@ onChange = e => {
   };
 onSubmit = e => {
     e.preventDefault();
-const userData = {
+    const userData = {
       username: this.state.username,
       password: this.state.password
     };
-console.log(userData);
-  };
+    axios.post('http://localhost:4000/login', userData)
+        .then(res => console.log(res.data));
+    console.log(userData);
+    this.props.history.push('/');
+};
 render() {
     const { errors } = this.state;
 return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
+            <Link to="/home" className="btn">
               <i className="material-icons left"></i> Back to
               home
             </Link>
