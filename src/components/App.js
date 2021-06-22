@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import { Navbar, Nav} from 'react-bootstrap';
+import AuthForm from './AuthForm'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
@@ -28,6 +29,7 @@ class App extends Component {
           </Navbar>
           <br/>
         <div className="container">
+          <Route path="/login" exact component={AuthForm} />
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />

@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
+import firebase from "firebase";
+var user = firebase.auth().currentUser.uid;
+
 const Todo = props => (
     <tr style={{border: props.todo.todo_completed===true ? "5px double #00FA9A" : "black" }}>
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+            <Link to={"/edit/"+{user}+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
         </td>
         <td>
             <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
@@ -18,7 +21,7 @@ const Todo = props => (
 );
 function deleteItem(props){
     console.log(`Test`);
-    axios.delete('http://localhost:4000/todos/delete/' + props.todo._id)
+    axios.delete('https://www.restaurant-list.com/todos/'+{user}+'/delete/' + props.todo._id)
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -35,7 +38,7 @@ export default class TodosList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/todos/')
+        axios.get('https://www.restaurant-list.com/todos/'+{user})
             .then(response => {
                 this.setState({ todos: response.data });
             })

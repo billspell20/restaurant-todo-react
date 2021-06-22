@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import firebase from "firebase";
+var user = firebase.auth().currentUser.uid;
+
 export default class CreateTodo extends Component {
 
     constructor(props) {
@@ -42,7 +45,7 @@ export default class CreateTodo extends Component {
             todo_completed: this.state.todo_completed
         };
 
-        axios.post('http://localhost:4000/todos/add', newTodo)
+        axios.post('https://www.restaurant-list.com/todos/'+{user}+'/add', newTodo)
             .then(res => console.log(res.data));
 
         this.setState({
