@@ -29,4 +29,8 @@
   .google-login {
     margin-top: 40px;
   }
+
+  .ui.card.auth-form-card  {
+    top: 35px;
+  }
   

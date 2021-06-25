@@ -1,6 +1,6 @@
 import { useState, Fragment, useEffect } from "react";
 import { Card, Menu, Form, Button } from "semantic-ui-react";
-
+import { Redirect } from 'react-router';
 import { auth, authUI } from "../firebase";
 
 import "../css/AuthForm.css";
@@ -18,12 +18,6 @@ async function authenticateUser(email, password, isLogin) {
   }
 }
 
-function renderLoggedIn() {
-  return (
-    this.props.history.push('/')
-  );
-}
-
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
   const [user, setUser] = useState(null);
@@ -35,7 +29,7 @@ function AuthForm() {
   const [signupPassword, setSignupPassword] = useState("");
   
   auth.onAuthStateChanged((user) => setUser(user));
-
+  
   useEffect(() => {
     if (!user) {
       authUI.start(".google-login", {
@@ -50,7 +44,7 @@ function AuthForm() {
       <Card className="auth-form-card">
         <Card.Content>
           {user ? (
-            renderLoggedIn()
+            <Redirect to="/list" />
           ) : (
             <Fragment>
               <Card.Header className="auth-form-header">Restaurant Passport</Card.Header>

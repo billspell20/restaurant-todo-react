@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from "firebase";
-var user = firebase.auth().currentUser.uid;
+import { Redirect } from 'react-router';
 
 export default class EditTodo extends Component {
 
     constructor(props) {
         super(props);
-
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
         this.state = {
             todo_description: '',
             todo_priority: '',
             todo_completed: false
         }
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.useruid = user.uid;
+              console.log(this.useruid)
+            } else {
+              <Redirect to="/" />
+              console.log("no id")
+            }
+          });
     }
 
     componentDidMount() {
-        axios.get('https://www.restaurant-list.com/todos/'+{user}+this.props.match.params.id)
+        axios.get('https://www.restaurant-list.com/todos/'+this.useruid+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
@@ -60,10 +67,10 @@ export default class EditTodo extends Component {
             todo_completed: this.state.todo_completed
         };
         console.log(obj);
-        axios.post('https://www.restaurant-list.com/todos/update/'+{user}+this.props.match.params.id, obj)
+        axios.post('https://www.restaurant-list.com/todos/update/'+this.useruid+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
         
-        this.props.history.push('/');
+        this.props.history.push('/list');
         window.location.reload();
     }
 
@@ -136,7 +143,7 @@ export default class EditTodo extends Component {
                     </div>
                 </form>
                 <div className="row justify-content-center">
-                    <a href="/" className="btn btn-outline-danger" role="button" aria-pressed="true" style={{marginBottom:"40px"}}>Cancel</a>
+                    <a href="/list" className="btn btn-outline-danger" role="button" aria-pressed="true" style={{marginBottom:"40px"}}>Cancel</a>
                 </div>
             </div>
         )

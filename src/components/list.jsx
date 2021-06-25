@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-
 import firebase from "firebase";
-var user = firebase.auth().currentUser.uid;
+import { Redirect } from 'react-router';
 
 const Todo = props => (
     <tr style={{border: props.todo.todo_completed===true ? "5px double #00FA9A" : "black" }}>
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+{user}+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+            <Link to={"/edit/"+this.userid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
         </td>
         <td>
             <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
@@ -21,7 +20,7 @@ const Todo = props => (
 );
 function deleteItem(props){
     console.log(`Test`);
-    axios.delete('https://www.restaurant-list.com/todos/'+{user}+'/delete/' + props.todo._id)
+    axios.delete('https://www.restaurant-list.com/todos/delete/' + this.useruid + '/' + props.todo._id)
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -34,11 +33,19 @@ export default class TodosList extends Component {
     constructor(props) {
         super(props);
         this.state = {todos: []};
-
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.useruid = user.uid;
+              console.log(this.useruid)
+            } else {
+              <Redirect to="/" />
+              console.log("no id")
+            }
+          });
     }
 
     componentDidMount() {
-        axios.get('https://www.restaurant-list.com/todos/'+{user})
+        axios.get('https://www.restaurant-list.com/todos/'+this.useruid)
             .then(response => {
                 this.setState({ todos: response.data });
             })
@@ -48,8 +55,8 @@ export default class TodosList extends Component {
     }
 
     todoList() {
-        return this.state.todos.map(function(currentTodo, i){
-            return <Todo todo={currentTodo} key={i} />;
+        return Object.keys(this.state.todos).map((i) => {
+            return <Todo todo={this.state.todos} key={i} />
         })
     }
 
