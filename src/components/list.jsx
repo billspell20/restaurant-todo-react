@@ -10,7 +10,7 @@ const Todo = props => (
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+this.userid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+            <Link to={"/edit/"+this.useruid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
         </td>
         <td>
             <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
