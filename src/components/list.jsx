@@ -5,23 +5,12 @@ import Button from 'react-bootstrap/Button';
 import firebase from "firebase";
 import { Redirect } from 'react-router';
 
-function authtype(){
-    firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      var useruid = user.uid;
-      return useruid;
-    } else {
-      <Redirect to="/" />
-      console.log("no id")
-    }
-  });};
-
 const Todo = props => (
     <tr style={{border: props.todo.todo_completed===true ? "5px double #00FA9A" : "black" }}>
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+authtype()+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+            <Link to={"/edit/"+props.useruid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
         </td>
         <td>
             <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
