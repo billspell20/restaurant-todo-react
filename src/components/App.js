@@ -4,7 +4,7 @@ import { Navbar, Nav} from 'react-bootstrap';
 import AuthForm from './AuthForm'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import auth from "../firebase";
+import { auth } from "../firebase";
 import CreateTodo from "./create";
 import EditTodo from "./todo";
 import TodosList from "./list";
