@@ -18,7 +18,7 @@ export default class EditTodo extends Component {
         }
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.useruid = user.uid;
+              this.state.useruid = user.uid;
               console.log(this.useruid)
             } else {
               <Redirect to="/" />
@@ -28,7 +28,7 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://www.restaurant-list.com/todos/'+this.match.params.useruid+'/'+this.props.match.params.id)
+        axios.get('https://www.restaurant-list.com/todos/'+this.state.useruid+'/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
@@ -67,7 +67,7 @@ export default class EditTodo extends Component {
             todo_completed: this.state.todo_completed
         };
         console.log(obj);
-        axios.post('https://www.restaurant-list.com/todos/update/'+this.match.params.useruid + '/' + this.props.match.params.id, obj)
+        axios.post('https://www.restaurant-list.com/todos/update/'+this.state.useruid + '/' + this.props.match.params.id, obj)
             .then(res => console.log(res.data));
         
         this.props.history.push('/list');

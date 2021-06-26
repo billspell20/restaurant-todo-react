@@ -10,7 +10,7 @@ const Todo = props => (
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+props.useruid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+            <Link to={"/edit/"+this.state.useruid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
         </td>
         <td>
             <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
@@ -20,7 +20,7 @@ const Todo = props => (
 );
 function deleteItem(props){
     console.log(`Test`);
-    axios.delete('https://www.restaurant-list.com/todos/delete/' + this.match.params.useruid + '/' + props.todo._id)
+    axios.delete('https://www.restaurant-list.com/todos/delete/' + this.state.useruid + '/' + props.todo._id)
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -35,7 +35,7 @@ export default class TodosList extends Component {
         this.state = {todos: []};
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.useruid = user.uid;
+              this.state.useruid = user.uid;
               console.log(this.useruid)
             } else {
               <Redirect to="/" />
@@ -45,7 +45,7 @@ export default class TodosList extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://www.restaurant-list.com/todos/'+this.match.params.useruid)
+        axios.get('https://www.restaurant-list.com/todos/'+this.state.useruid)
             .then(response => {
                 this.setState({ todos: response.data });
             })

@@ -17,7 +17,7 @@ export default class CreateTodo extends Component {
         }
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.useruid = user.uid;
+              this.state.useruid = user.uid;
               console.log(this.useruid)
             } else {
               console.log("no id");
@@ -51,7 +51,7 @@ export default class CreateTodo extends Component {
             todo_completed: this.state.todo_completed
         };
 
-        axios.post('https://www.restaurant-list.com/todos/add/'+this.match.params.useruid, newTodo)
+        axios.post('https://www.restaurant-list.com/todos/add/'+this.state.useruid, newTodo)
             .then(res => console.log(res.data));
         this.setState({
             todo_description: '',
