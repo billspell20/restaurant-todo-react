@@ -55,7 +55,7 @@ export default class TodosList extends Component {
     }
 
     todoList() {
-        return Object.keys(this.state.todos).map((i) => {
+        return Object.keys().map((i) => {
             return <Todo todo={this.state.todos} key={i} />
         })
     }
