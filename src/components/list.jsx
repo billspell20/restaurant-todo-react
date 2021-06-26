@@ -20,7 +20,7 @@ const Todo = props => (
 );
 function deleteItem(props){
     console.log(`Test`);
-    axios.delete('https://www.restaurant-list.com/todos/delete/' + this.useruid + '/' + props.todo._id)
+    axios.delete('https://www.restaurant-list.com/todos/delete/' + this.props.match.params.useruid + '/' + props.todo._id)
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -45,7 +45,7 @@ export default class TodosList extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://www.restaurant-list.com/todos/'+this.useruid)
+        axios.get('https://www.restaurant-list.com/todos/'+this.props.match.params.useruid)
             .then(response => {
                 this.setState({ todos: response.data });
             })
@@ -55,7 +55,7 @@ export default class TodosList extends Component {
     }
 
     todoList() {
-        return Object.keys().map((i) => {
+        return Object.keys(this.state.todos).map((i) => {
             return <Todo todo={this.state.todos} key={i} />
         })
     }
