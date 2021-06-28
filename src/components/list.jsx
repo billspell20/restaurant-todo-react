@@ -38,6 +38,16 @@ function deleteItem(props){
         })
         window.location.reload();
 };
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      this.setState({useruid: user.uid});
+      console.log(this.state.useruid)
+    } else {
+      <Redirect to="/" />
+      console.log("no id")
+    }
+  });
+
 export default class TodosList extends Component {
 
     constructor(props) {
@@ -45,15 +55,6 @@ export default class TodosList extends Component {
         this.firebase.auth().onAuthStateChanged = this.firebase.auth().onAuthStateChanged.bind(this)
         this.state = {todos: [],
           useruid: "null"};
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              this.setState({useruid: user.uid});
-              console.log(this.state.useruid)
-            } else {
-              <Redirect to="/" />
-              console.log("no id")
-            }
-          });
     }
 
     componentDidMount() {
