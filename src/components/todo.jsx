@@ -14,12 +14,13 @@ export default class EditTodo extends Component {
         this.state = {
             todo_description: '',
             todo_priority: '',
-            todo_completed: false
+            todo_completed: false,
+            useruid: ""
         }
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.state.useruid = user.uid;
-              console.log(this.useruid)
+              this.setState({useruid: user.uid});
+              console.log(this.state.useruid)
             } else {
               <Redirect to="/" />
               console.log("no id")
