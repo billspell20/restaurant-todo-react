@@ -11,7 +11,7 @@ export default class EditTodo extends Component {
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.onAuthStateChanged = this.onAuthStateChanged.bind(this)
+        this.firebase.auth().onAuthStateChanged = this.firebase.auth().onAuthStateChanged.bind(this)
         this.state = {
             todo_description: '',
             todo_priority: '',

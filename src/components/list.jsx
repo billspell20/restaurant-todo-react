@@ -42,7 +42,7 @@ export default class TodosList extends Component {
 
     constructor(props) {
         super(props);
-        this.onAuthStateChanged = this.onAuthStateChanged.bind(this)
+        this.firebase.auth().onAuthStateChanged = this.firebase.auth().onAuthStateChanged.bind(this)
         this.state = {todos: [],
           useruid: "null"};
         firebase.auth().onAuthStateChanged((user) => {
