@@ -14,7 +14,7 @@ export default class CreateTodo extends Component {
             todo_description: '',
             todo_priority: '',
             todo_completed: false,
-            useruid: ""
+            useruid: "null"
         }
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {

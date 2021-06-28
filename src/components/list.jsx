@@ -43,7 +43,7 @@ export default class TodosList extends Component {
     constructor(props) {
         super(props);
         this.state = {todos: [],
-          useruid: ""};
+          useruid: "null"};
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({useruid: user.uid});
