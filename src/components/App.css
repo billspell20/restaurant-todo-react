@@ -52,6 +52,19 @@
   border-color: #dc3545;
 }
 
+.btn-outline-info {
+  background-color: transparent;
+}
+
+.btn-outline-info:hover {
+  background-color: #17a2b8;
+}
+
+.btn-outline-danger:focus {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
 .table td, .table th {
   vertical-align: middle;
 }

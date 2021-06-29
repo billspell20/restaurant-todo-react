@@ -20,12 +20,8 @@ const Todo = props => (
 );
 function editItem(props){
     console.log('Test');
-    this.props.history.push("/edit/"+findUser()+"/"+props.todo._id)
-    .then((res) => {
-        console.log('Edit navigation success')
-    }).catch((error) => {
-        console.log(error)
-    });
+    var redirectEditScreen = "/edit/" + findUser() + "/" + props.todo._id;
+    <Redirect to={redirectEditScreen} />
 }
 function deleteItem(props){
     console.log(`Test`);
