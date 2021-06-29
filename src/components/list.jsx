@@ -20,7 +20,7 @@ const Todo = props => (
 );
 function deleteItem(props){
     console.log(`Test`);
-    axios.delete('https://www.restaurant-list.com/todos/delete/' + this.state.useruid + '/' + props.todo._id)
+    axios.delete('https://www.restaurant-list.com/todos/delete/' + props.useruid + '/' + props.todo._id)
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
