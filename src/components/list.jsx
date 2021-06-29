@@ -10,7 +10,7 @@ const Todo = props => (
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+useruid1+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+            <Button onClick={() => editItem(props)} className="btn btn-outline-info">Edit</Button>
         </td>
         <td>
             <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
@@ -18,9 +18,18 @@ const Todo = props => (
         <td style={{display: "none"}}>{props.todo.todo_completed}</td>
     </tr>
 );
+function editItem(props){
+    console.log('Test');
+    this.props.history.push("/edit/"+findUser()+"/"+props.todo._id)
+    .then((res) => {
+        console.log('Edit navigation success')
+    }).catch((error) => {
+        console.log(error)
+    });
+}
 function deleteItem(props){
     console.log(`Test`);
-    axios.delete('https://www.restaurant-list.com/todos/delete/' + useruid1 + '/' + props.todo._id)
+    axios.delete('https://www.restaurant-list.com/todos/delete/' + findUser() + '/' + props.todo._id)
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -28,14 +37,16 @@ function deleteItem(props){
         })
         window.location.reload();
 };
-var useruid1 = () => firebase.auth().onAuthStateChanged((user) => {
+function findUser(){
+    firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      console.log(user.uid)
       return user.uid;
     } else {
       console.log("no id");
       <Redirect to="/" />
     }
-});
+})};
 
 export default class TodosList extends Component {
 
