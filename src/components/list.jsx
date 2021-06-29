@@ -13,7 +13,7 @@ firebase.auth().onAuthStateChanged((user) => {
       <Redirect to="/" />
       console.log("no id")
     }
-  });
+  }).bind(this);
 
 const Todo = props => (
     <tr style={{border: props.todo.todo_completed===true ? "5px double #00FA9A" : "black" }}>
@@ -38,21 +38,11 @@ function deleteItem(props){
         })
         window.location.reload();
 };
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.setState({useruid: user.uid});
-      console.log(this.state.useruid)
-    } else {
-      <Redirect to="/" />
-      console.log("no id")
-    }
-  });
 
 export default class TodosList extends Component {
 
     constructor(props) {
         super(props);
-        this.firebase.auth().onAuthStateChanged = this.firebase.auth().onAuthStateChanged.bind(this)
         this.state = {todos: [],
           useruid: "null"};
     }

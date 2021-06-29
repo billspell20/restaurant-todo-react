@@ -5,13 +5,13 @@ import { Redirect } from 'react-router';
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      this.setState({useruid: user.uid});
+      this.props.setState({useruid: user.uid});
       console.log(this.state.useruid)
     } else {
       <Redirect to="/" />
       console.log("no id")
     }
-  });
+  }).bind(this);
 
 export default class EditTodo extends Component {
 
@@ -21,7 +21,6 @@ export default class EditTodo extends Component {
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.firebase.auth().onAuthStateChanged = this.firebase.auth().onAuthStateChanged.bind(this)
         this.state = {
             todo_description: '',
             todo_priority: '',

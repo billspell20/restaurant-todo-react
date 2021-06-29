@@ -5,13 +5,13 @@ import firebase from "firebase";
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      this.setState({useruid: user.uid});
+      this.props.setState({useruid: user.uid});
       console.log(this.state.useruid)
     } else {
       console.log("no id");
       <Redirect to="/" />
     }
-  });
+  }).bind(this);
 
 export default class CreateTodo extends Component {
 
@@ -20,7 +20,6 @@ export default class CreateTodo extends Component {
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.firebase.auth().onAuthStateChanged = this.firebase.auth().onAuthStateChanged.bind(this)
         this.state = {
             todo_description: '',
             todo_priority: '',
