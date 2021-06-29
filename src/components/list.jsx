@@ -10,7 +10,7 @@ const Todo = props => (
         <td>{props.todo.todo_description}</td>
         <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/"+this.state.useruid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
+            <Link to={"/edit/"+props.useruid+"/"+props.todo._id} className="btn btn-outline-info">Edit</Link>
         </td>
         <td>
             <Button onClick={() => deleteItem(props)} className="btn btn-outline-danger">Delete</Button>
@@ -46,7 +46,7 @@ export default class TodosList extends Component {
               console.log("no id");
               <Redirect to="/" />
             }
-        }).bind(this);
+        });
         axios.get('https://www.restaurant-list.com/todos/'+this.state.useruid)
             .then(response => {
                 this.setState({ todos: response.data });
