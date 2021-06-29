@@ -3,15 +3,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router';
 import firebase from "firebase";
 
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.props.setState({useruid: user.uid});
-      console.log(this.state.useruid)
-    } else {
-      console.log("no id");
-      <Redirect to="/" />
-    }
-  }).bind(this);
+
 
 export default class CreateTodo extends Component {
 
@@ -28,6 +20,18 @@ export default class CreateTodo extends Component {
         }
     }
     
+    componentDidMount(){
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.setState({useruid: user.uid});
+              console.log(this.state.useruid)
+            } else {
+              console.log("no id");
+              <Redirect to="/" />
+            }
+          }).bind(this);
+    }
+
     onChangeTodoDescription(e) {
         this.setState({
             todo_description: e.target.value

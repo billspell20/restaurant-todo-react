@@ -3,16 +3,6 @@ import axios from 'axios';
 import firebase from "firebase";
 import { Redirect } from 'react-router';
 
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.props.setState({useruid: user.uid});
-      console.log(this.state.useruid)
-    } else {
-      <Redirect to="/" />
-      console.log("no id")
-    }
-  }).bind(this);
-
 export default class EditTodo extends Component {
 
     constructor(props) {
@@ -30,6 +20,15 @@ export default class EditTodo extends Component {
     }
 
     componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.setState({useruid: user.uid});
+              console.log(this.state.useruid)
+            } else {
+              console.log("no id");
+              <Redirect to="/" />
+            }
+          }).bind(this);
         axios.get('https://www.restaurant-list.com/todos/'+this.state.useruid+'/'+this.props.match.params.id)
             .then(response => {
                 this.setState({

@@ -5,16 +5,6 @@ import Button from 'react-bootstrap/Button';
 import firebase from "firebase";
 import { Redirect } from 'react-router';
 
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.setState({useruid: user.uid});
-      console.log(this.state.useruid)
-    } else {
-      <Redirect to="/" />
-      console.log("no id")
-    }
-  }).bind(this);
-
 const Todo = props => (
     <tr style={{border: props.todo.todo_completed===true ? "5px double #00FA9A" : "black" }}>
         <td>{props.todo.todo_description}</td>
@@ -48,6 +38,15 @@ export default class TodosList extends Component {
     }
 
     componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.setState({useruid: user.uid});
+              console.log(this.state.useruid)
+            } else {
+              console.log("no id");
+              <Redirect to="/" />
+            }
+        }).bind(this);
         axios.get('https://www.restaurant-list.com/todos/'+this.state.useruid)
             .then(response => {
                 this.setState({ todos: response.data });
