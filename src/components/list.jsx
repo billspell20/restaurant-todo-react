@@ -47,7 +47,7 @@ export default class TodosList extends Component {
               <Redirect to="/" />
             }
         });
-        axios.get('https://www.restaurant-list.com/todos/'+this.state.useruid)
+        axios.get('https://www.restaurant-list.com/todos/')
             .then(response => {
                 this.setState({ todos: response.data });
             })
