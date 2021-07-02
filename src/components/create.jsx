@@ -57,7 +57,7 @@ export default class CreateTodo extends Component {
             todo_completed: this.state.todo_completed
         };
 
-        axios.post('https://www.restaurant-list.com/todos/add/', newTodo)
+        axios.post('https://www.restaurant-list.com/todos/add', newTodo)
             .then(res => console.log(res.data));
         this.setState({
             todo_description: '',
