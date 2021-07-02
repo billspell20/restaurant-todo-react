@@ -11,7 +11,7 @@
 }
 
 .navbar {
-  background-color: #282c34;
+  background-color: #282c34 !important;
   color:  white;
   padding: 12px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
