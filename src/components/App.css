@@ -21,6 +21,10 @@
   width: 100%
 }
 
+.navbar-collapse {
+  background-color: #282c34;
+}
+
 .navbar-toggler {
   background-color: white !important;
 }
