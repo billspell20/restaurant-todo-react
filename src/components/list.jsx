@@ -34,20 +34,24 @@ export default class TodosList extends Component {
     constructor(props) {
         super(props);
         this.state = {todos: [],
-          useruid: "null"};
+          user_id: "null"};
     }
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.setState({useruid: user.uid});
+              this.setState({user_id: user.uid});
               console.log(this.state.useruid)
             } else {
               console.log("no id");
               <Redirect to="/" />
             }
         });
-        axios.get('https://www.restaurant-list.com/todos/list')
+        axios.get('https://www.restaurant-list.com/todos/list', {
+            params: {
+              user_id: this.state.user_id
+            }
+          })
             .then(response => {
                 this.setState({ todos: response.data });
             })
