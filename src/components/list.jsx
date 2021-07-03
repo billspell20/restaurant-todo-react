@@ -41,7 +41,7 @@ export default class TodosList extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({user_id: user.uid});
-              console.log(this.state.useruid)
+              console.log(this.state.user_id)
             } else {
               console.log("no id");
               <Redirect to="/" />
