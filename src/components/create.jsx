@@ -16,15 +16,15 @@ export default class CreateTodo extends Component {
             todo_description: '',
             todo_priority: '',
             todo_completed: false,
-            useruid: "null"
+            user_id: "null"
         }
     }
     
     componentDidMount(){
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.setState({useruid: user.uid});
-              console.log(this.state.useruid)
+              this.setState({user_id: user.uid});
+              console.log(this.state.user_id)
             } else {
               console.log("no id");
               <Redirect to="/" />
@@ -54,7 +54,8 @@ export default class CreateTodo extends Component {
         const newTodo = {
             todo_description: this.state.todo_description,
             todo_priority: this.state.todo_priority,
-            todo_completed: this.state.todo_completed
+            todo_completed: this.state.todo_completed,
+            user_id: this.state.user_id
         };
 
         axios.post('https://www.restaurant-list.com/todos/add', newTodo)
@@ -62,7 +63,8 @@ export default class CreateTodo extends Component {
         this.setState({
             todo_description: '',
             todo_priority: '',
-            todo_completed: false
+            todo_completed: false,
+            user_id: "null"
         })
         this.props.history.push('/list');
         window.location.reload();
