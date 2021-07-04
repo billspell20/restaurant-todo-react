@@ -29,7 +29,7 @@ export default class EditTodo extends Component {
               <Redirect to="/" />
             }
           }).bind(this);
-        axios.get('https://www.restaurant-list.com/todos/'+ this.props.match.params.id)
+        axios.get('https://www.restaurant-list.com/todos/'+ this.state.useruid)
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
