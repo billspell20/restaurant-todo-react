@@ -15,21 +15,21 @@ export default class EditTodo extends Component {
             todo_description: '',
             todo_priority: '',
             todo_completed: false,
-            useruid: "null"
+            user_id: "null"
         }
     }
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              this.setState({useruid: user.uid});
-              console.log(this.state.useruid)
+              this.setState({user_id: user.uid});
+              console.log(this.state.user_id)
             } else {
               console.log("no id");
               <Redirect to="/" />
             }
           }).bind(this);
-        axios.get('https://www.restaurant-list.com/todos/'+ this.state.useruid)
+        axios.get('https://www.restaurant-list.com/todos/list/'+ this.state.user_id)
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
