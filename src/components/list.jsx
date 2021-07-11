@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { Redirect } from 'react-router';
 
 const Todo = props => (
@@ -41,24 +42,22 @@ export default class TodosList extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({user_id: user.uid});
-              console.log(this.state.user_id)
+              axios.get('https://www.restaurant-list.com/todos/list/' + this.state.user_id)
+              .then(response => {
+                  this.setState({ todos: response.data });
+              })
+              .catch(function (error){
+                  console.log(error);
+              });
             } else {
               console.log("no id");
               <Redirect to="/" />
             }
         });
-        axios.get('https://www.restaurant-list.com/todos/list')
-            .then(response => {
-                this.setState({ todos: response.data });
-            })
-            .catch(function (error){
-                console.log(error);
-            })
     }
 
     todoList() {
         return Object.keys(this.state.todos).map((i) => {
-            console.log(this.state.todos)
             return <Todo todo={this.state.todos[i]} key={i} />
         })
     }

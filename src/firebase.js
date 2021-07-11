@@ -1,4 +1,5 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import * as firebaseui from 'firebaseui'
 
 const firebaseConfig = {
@@ -13,19 +14,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-var userid = firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const useruid = user.uid;
-    console.log(useruid)
-    return useruid
-    // ...
-  } else {
-    console.log(user.uid)
-  }
-});
-
 export const auth = firebase.auth();
 export const authUI = new firebaseui.auth.AuthUI(auth);
-export var uid = userid;

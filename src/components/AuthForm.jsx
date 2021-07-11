@@ -5,7 +5,8 @@ import { auth, authUI } from "../firebase";
 
 import "../css/AuthForm.css";
 
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 async function authenticateUser(email, password, isLogin) {
   try {

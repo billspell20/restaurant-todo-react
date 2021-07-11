@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import { Redirect } from 'react-router';
 
 export default class EditTodo extends Component {

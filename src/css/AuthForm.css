@@ -29,8 +29,7 @@
   .google-login {
     margin-top: 40px;
   }
-  @media only screen and (min-width: 768px) {
-    .ui.card.auth-form-card  {
-      top: 35px;
-    }
+
+  .auth-form-wrapper {
+    margin-top: 10px;
   }
