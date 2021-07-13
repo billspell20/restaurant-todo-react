@@ -20,7 +20,6 @@ const Todo = props => (
     </tr>
 );
 function deleteItem(props){
-    console.log(`Test`);
     axios.delete('https://www.restaurant-list.com/todos/delete/' + props.todo._id + '/')
         .then((res) => {
             console.log('Item successfully deleted!')
