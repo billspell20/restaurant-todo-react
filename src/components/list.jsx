@@ -21,7 +21,7 @@ const Todo = props => (
 );
 function deleteItem(props){
     console.log(`Test`);
-    axios.delete('https://www.restaurant-list.com/todos/delete/' + props.todo._id)
+    axios.delete('https://www.restaurant-list.com/todos/delete/' + props.todo._id + '/')
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -42,7 +42,7 @@ export default class TodosList extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({user_id: user.uid});
-              axios.get('https://www.restaurant-list.com/todos/list/' + this.state.user_id)
+              axios.get('https://www.restaurant-list.com/todos/list/' + this.state.user_id + '/')
               .then(response => {
                   this.setState({ todos: response.data });
               })

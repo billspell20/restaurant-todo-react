@@ -59,7 +59,7 @@ export default class CreateTodo extends Component {
             user_id: this.state.user_id
         };
 
-        axios.post('https://www.restaurant-list.com/todos/add', newTodo)
+        axios.post('https://www.restaurant-list.com/todos/add/', newTodo)
             .then(res => console.log(res.data));
         this.setState({
             todo_description: '',
