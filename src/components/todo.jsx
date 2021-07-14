@@ -24,7 +24,6 @@ export default class EditTodo extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({user_id: user.uid});
-              console.log(this.state.user_id)
             } else {
               console.log("no id");
               <Redirect to="/" />
@@ -68,7 +67,6 @@ export default class EditTodo extends Component {
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
-        console.log(obj);
         axios.post('https://www.restaurant-list.com/todos/update/' + this.props.match.params.id + '/', obj)
             .then(res => console.log(res.data));
         

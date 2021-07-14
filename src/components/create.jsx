@@ -25,7 +25,6 @@ export default class CreateTodo extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({user_id: user.uid});
-              console.log(this.state.user_id)
             } else {
               console.log("no id");
               <Redirect to="/" />
