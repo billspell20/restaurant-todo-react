@@ -44,10 +44,9 @@ export default class TodosList extends Component {
               this.setState({user_id: user.uid});
               fetch('https://www.restaurant-list.com/todos/list/' + this.state.user_id + '/')
               .then(response => {
-                  response.clone().json().then(result => {
-                    console.log(result);
+                  response.clone().json()
+                  .then(result => {
                     this.setState({ todos: result});
-                    console.log(this.state.todos);
                   })
                   .catch(function (error){
                     console.log(error);

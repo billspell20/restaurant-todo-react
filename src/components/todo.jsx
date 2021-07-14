@@ -31,15 +31,21 @@ export default class EditTodo extends Component {
           }).bind(this);
         fetch('https://www.restaurant-list.com/todos/'+ this.props.match.params.id + '/')
             .then(response => {
-                this.setState({
-                    todo_description: response.data.todo_description,
-                    todo_priority: response.data.todo_priority,
-                    todo_completed: response.data.todo_completed
-                })   
+                response.clone().json()
+                .then(result => {
+                    this.setState({
+                        todo_description: result.data.todo_description,
+                        todo_priority: result.data.todo_priority,
+                        todo_completed: result.data.todo_completed
+                    })
+                .catch(function (error){
+                    console.log(error);
+                });
             })
             .catch(function (error) {
                 console.log(error);
             })
+        });
     }
     
     onChangeTodoDescription(e) {
