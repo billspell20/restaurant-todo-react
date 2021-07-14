@@ -33,10 +33,11 @@ export default class EditTodo extends Component {
             .then(response => {
                 response.clone().json()
                 .then(result => {
+                    console.log(result.clone())
                     this.setState({
-                        todo_description: result.data.todo_description,
-                        todo_priority: result.data.todo_priority,
-                        todo_completed: result.data.todo_completed
+                        todo_description: result.todo_description,
+                        todo_priority: result.todo_priority,
+                        todo_completed: result.todo_completed
                     })
                 .catch(function (error){
                     console.log(error);
