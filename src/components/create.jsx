@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import fetch from 'node-fetch';
 import { Redirect } from 'react-router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -58,7 +58,10 @@ export default class CreateTodo extends Component {
             user_id: this.state.user_id
         };
 
-        axios.post('https://www.restaurant-list.com/todos/add/', newTodo)
+        fetch('https://www.restaurant-list.com/todos/add/', {
+            method: 'POST',
+            body: JSON.stringify(newTodo),
+            headers: { 'Content-Type': 'application/json' }})
             .then(res => console.log(res.data));
         this.setState({
             todo_description: '',

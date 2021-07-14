@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import fetch from 'node-fetch';
 import Button from 'react-bootstrap/Button';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -20,7 +20,8 @@ const Todo = props => (
     </tr>
 );
 function deleteItem(props){
-    axios.delete('https://www.restaurant-list.com/todos/delete/' + props.todo._id + '/')
+    fetch('https://www.restaurant-list.com/todos/delete/' + props.todo._id + '/', {
+        method: 'POST'})
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -41,9 +42,10 @@ export default class TodosList extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({user_id: user.uid});
-              axios.get('https://www.restaurant-list.com/todos/list/' + this.state.user_id + '/')
+              fetch('https://www.restaurant-list.com/todos/list/' + this.state.user_id + '/')
               .then(response => {
-                  this.setState({ todos: response.data });
+                  this.setState({ todos: response.json()});
+                  console.log(response.json());
               })
               .catch(function (error){
                   console.log(error);

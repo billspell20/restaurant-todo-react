@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import fetch from 'node-fetch';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Redirect } from 'react-router';
@@ -29,7 +29,7 @@ export default class EditTodo extends Component {
               <Redirect to="/" />
             }
           }).bind(this);
-        axios.get('https://www.restaurant-list.com/todos/'+ this.props.match.params.id + '/')
+        fetch('https://www.restaurant-list.com/todos/'+ this.props.match.params.id + '/')
             .then(response => {
                 this.setState({
                     todo_description: response.data.todo_description,
@@ -67,9 +67,11 @@ export default class EditTodo extends Component {
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
-        axios.post('https://www.restaurant-list.com/todos/update/' + this.props.match.params.id + '/', obj)
-            .then(res => console.log(res.data));
-        
+        fetch('https://www.restaurant-list.com/todos/update/' + this.props.match.params.id + '/', {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: { 'Content-Type': 'application/json' }})
+            .then(res => console.log(res.data));   
         this.props.history.push('/list');
         window.location.reload();
     }
