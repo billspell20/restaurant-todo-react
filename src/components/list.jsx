@@ -21,7 +21,7 @@ const Todo = props => (
 );
 function deleteItem(props){
     fetch('https://www.restaurant-list.com/todos/delete/' + props.todo._id + '/', {
-        method: 'POST'})
+        method: 'DELETE'})
         .then((res) => {
             console.log('Item successfully deleted!')
         }).catch((error) => {
@@ -44,8 +44,7 @@ export default class TodosList extends Component {
               this.setState({user_id: user.uid});
               fetch('https://www.restaurant-list.com/todos/list/' + this.state.user_id + '/')
               .then(response => {
-                  console.log(response.clone().json())
-                  .then(result => {
+                  response.clone().json().then(result => {
                     console.log(result);
                     this.setState({ todos: result});
                     console.log(this.state.todos);
@@ -56,7 +55,7 @@ export default class TodosList extends Component {
               })
               .catch(function (error){
                   console.log(error);
-              });
+              })
             } else {
               console.log("no id");
               <Redirect to="/" />
