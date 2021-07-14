@@ -33,12 +33,12 @@ export default class EditTodo extends Component {
             .then(response => {
                 response.clone().json()
                 .then(result => {
-                    console.log(result.clone())
                     this.setState({
                         todo_description: result.todo_description,
                         todo_priority: result.todo_priority,
                         todo_completed: result.todo_completed
                     })
+                })
                 .catch(function (error){
                     console.log(error);
                 });
@@ -46,7 +46,6 @@ export default class EditTodo extends Component {
             .catch(function (error) {
                 console.log(error);
             })
-        });
     }
     
     onChangeTodoDescription(e) {
