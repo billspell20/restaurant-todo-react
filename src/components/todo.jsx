@@ -29,8 +29,13 @@ export default class EditTodo extends Component {
               <Redirect to="/" />
             }
           }).bind(this);
-        fetch('https://www.restaurant-list.com/todos/'+ this.props.match.params.id + '/',
-            { mode: 'cors' })
+        fetch('https://www.restaurant-list.com/todos/'+ this.props.match.params.id + '/', {
+            method: 'GET',   
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://www.restaurant-list.com/'
+            },
+            mode: 'cors'})
             .then(response => {
                 response.clone().json()
                 .then(result => {
@@ -78,6 +83,7 @@ export default class EditTodo extends Component {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://www.restaurant-list.com/'
               },
             body: JSON.stringify(obj),
             mode: 'cors' })

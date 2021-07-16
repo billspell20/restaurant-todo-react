@@ -58,6 +58,7 @@ export default class CreateTodo extends Component {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://www.restaurant-list.com/'
               },
             body: JSON.stringify(newTodo),
             mode: 'cors' })

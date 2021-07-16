@@ -24,6 +24,7 @@ function deleteItem(props){
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://www.restaurant-list.com/'
           },
         mode: 'cors' })
         .then((res) => {
@@ -46,8 +47,13 @@ export default class TodosList extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               this.setState({user_id: user.uid});
-              fetch('https://www.restaurant-list.com/todos/list/' + this.state.user_id + '/',
-                { mode: 'cors' })
+              fetch('https://www.restaurant-list.com/todos/list/' + this.state.user_id + '/', {   
+                method: 'GET',   
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'https://www.restaurant-list.com/'
+                },
+                mode: 'cors'})
               .then(response => {
                   response.clone().json()
                   .then(result => {
