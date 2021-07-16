@@ -30,7 +30,7 @@ export default class EditTodo extends Component {
             }
           }).bind(this);
         fetch('https://www.restaurant-list.com/todos/'+ this.props.match.params.id + '/',
-            { mode: 'no-cors' })
+            { mode: 'cors' })
             .then(response => {
                 response.clone().json()
                 .then(result => {
@@ -76,8 +76,11 @@ export default class EditTodo extends Component {
         };
         fetch('https://www.restaurant-list.com/todos/update/' + this.props.match.params.id + '/', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+              },
             body: JSON.stringify(obj),
-            mode: 'no-cors' })
+            mode: 'cors' })
             .then(res => console.log(res.data));   
         this.props.history.push('/list');
         window.location.reload();

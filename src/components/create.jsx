@@ -56,8 +56,11 @@ export default class CreateTodo extends Component {
 
         fetch('https://www.restaurant-list.com/todos/add/', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+              },
             body: JSON.stringify(newTodo),
-            mode: 'no-cors' })
+            mode: 'cors' })
             .then(res => console.log(res.data));
         this.setState({
             todo_description: '',
