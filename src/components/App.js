@@ -19,6 +19,7 @@ class App extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" style={{color: "white"}}>
               <Nav className="mr-auto">
+                <Nav.Link href="/" className="nav-link" style={{color: "white"}}>Log In</Nav.Link>
                 <Nav.Link href="/" className="nav-link" onClick={() => auth.signOut()} style={{color: "white"}}>Log Out</Nav.Link>
                 <Nav.Link href="/list" className="nav-link" style={{color: "white"}}>View List</Nav.Link>
                 <Nav.Link href="/create" className="nav-link" style={{color: "white"}}>Add Entry</Nav.Link>
