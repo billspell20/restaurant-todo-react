@@ -44,7 +44,7 @@ export default class CreateTodo extends Component {
         });
     }
 
-    onSubmit(e) {
+    async onSubmit(e) {
         e.preventDefault();
      
         const newTodo = {
@@ -54,7 +54,7 @@ export default class CreateTodo extends Component {
             user_id: this.state.user_id
         };
 
-        fetch('https://www.restaurant-list.com/todos/add/', {
+        await fetch('https://www.restaurant-list.com/todos/add/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

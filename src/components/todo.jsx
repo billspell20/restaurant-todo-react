@@ -72,14 +72,14 @@ export default class EditTodo extends Component {
         });
     }
 
-    onSubmit(e) {
+    async onSubmit(e) {
         e.preventDefault();
         const obj = {
             todo_description: this.state.todo_description,
             todo_priority: this.state.todo_priority,
             todo_completed: this.state.todo_completed
         };
-        fetch('https://www.restaurant-list.com/todos/update/' + this.props.match.params.id + '/', {
+        await fetch('https://www.restaurant-list.com/todos/update/' + this.props.match.params.id + '/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -19,8 +19,8 @@ const Todo = props => (
         <td style={{display: "none"}}>{props.todo.todo_completed}</td>
     </tr>
 );
-function deleteItem(props){
-    fetch('https://www.restaurant-list.com/todos/delete/' + props.todo._id + '/', {
+async function deleteItem(props){
+    await fetch('https://www.restaurant-list.com/todos/delete/' + props.todo._id + '/', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
