@@ -35,6 +35,10 @@
   border-color: #282c34;
 }
 
+.auth-form-wrapper {
+  margin-top: 50px;
+}
+
 .btn-outline-primary:hover{
   background-color: #282c34;
   border-color: #282c34;

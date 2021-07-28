@@ -41,6 +41,9 @@ function AuthForm() {
   }, [user]);
 
   return (
+    <div>
+    <div><h3>Please log in or sign up below in order to view your restaurant to-do list. While logged in, you can add entries, edit and delete previous entries, and mark entries as complete.</h3>
+    </div>
     <div className="auth-form-wrapper">
       <Card className="auth-form-card">
         <Card.Content>
@@ -132,6 +135,7 @@ function AuthForm() {
           )}
         </Card.Content>
       </Card>
+    </div>
     </div>
   );
 }

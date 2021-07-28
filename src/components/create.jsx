@@ -79,7 +79,7 @@ export default class CreateTodo extends Component {
                 <h3>Create New Entry</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
-                        <label>Description: </label>
+                        <label>Restaurant Name: </label>
                         <input  type="text"
                                 className="form-control"
                                 value={this.state.todo_description}
