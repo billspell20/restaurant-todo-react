@@ -9,6 +9,8 @@ import CreateTodo from "./create";
 import EditTodo from "./todo";
 import TodosList from "./list";
 import Footer from "./Footer"
+import Terms from "./terms"
+import Policy from "./policy"
 
 class App extends Component {
   render() {
@@ -23,6 +25,8 @@ class App extends Component {
                 <Nav.Link href="/" className="nav-link" onClick={() => auth.signOut()} style={{color: "white"}}>Log Out</Nav.Link>
                 <Nav.Link href="/list" className="nav-link" style={{color: "white"}}>View List</Nav.Link>
                 <Nav.Link href="/create" className="nav-link" style={{color: "white"}}>Add Entry</Nav.Link>
+                <Nav.Link href="/terms" className="nav-link" style={{color: "white"}}>Terms & Conditions</Nav.Link>
+                <Nav.Link href="/policy" className="nav-link" style={{color: "white"}}>Privacy Policy</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
@@ -32,6 +36,8 @@ class App extends Component {
           <Route path="/list" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
+          <Route path="/terms" componenr={Terms} />
+          <Route path="/policy" componenr={Policy} />
         </div>
         <Footer />
       </Router>
