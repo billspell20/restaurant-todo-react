@@ -36,8 +36,8 @@ class App extends Component {
           <Route path="/list" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
-          <Route path="/terms" componenr={Terms} />
-          <Route path="/policy" componenr={Policy} />
+          <Route path="/terms" component={Terms} />
+          <Route path="/policy" component={Policy} />
         </div>
         <Footer />
       </Router>

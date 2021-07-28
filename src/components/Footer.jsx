@@ -8,7 +8,7 @@ function Footer() {
     <div id="footerdiv">
       <p>Copyright ⓒ {year}</p>
       <Link to={"/terms"} >Terms & Conditions</Link>
-      <Link to={"/policy"} >Terms & Conditions</Link>
+      <Link to={"/policy"} > | Privacy Policy</Link>
     </div>
     </footer>
   );
