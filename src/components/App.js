@@ -11,6 +11,7 @@ import TodosList from "./list";
 import Footer from "./Footer"
 import Terms from "./terms"
 import Policy from "./policy"
+import StoreIcons from "./storeicons"
 
 class App extends Component {
   render() {
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path="/terms" component={Terms} />
           <Route path="/policy" component={Policy} />
         </div>
+        <StoreIcons />
         <Footer />
       </Router>
     );
