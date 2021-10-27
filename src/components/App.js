@@ -12,6 +12,7 @@ import Footer from "./Footer"
 import Terms from "./terms"
 import Policy from "./policy"
 import StoreIcons from "./storeicons"
+import appads from "./app-ads.txt"
 
 class App extends Component {
   render() {
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path="/create" component={CreateTodo} />
           <Route path="/terms" component={Terms} />
           <Route path="/policy" component={Policy} />
+          <Route path="/app-ads.txt" component={appads} />
         </div>
         <StoreIcons />
         <Footer />
